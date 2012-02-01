@@ -1,14 +1,16 @@
 package org.trolo.torrent;
 
 
+import com.google.common.collect.ImmutableList;
 import org.trolo.common.Sha1Hash;
 
+import javax.annotation.concurrent.Immutable;
 import java.net.URI;
-import java.util.List;
 
 /**
  * @author: Stanislav Kurilin
  */
+@Immutable
 public interface TorrentMetaFile {
     URI announce();
 
@@ -16,9 +18,9 @@ public interface TorrentMetaFile {
 
     int bytesInPiece();
 
-    List<Sha1Hash> pieces();
+    ImmutableList<Sha1Hash> pieces();
 
-    List<SingleFileDescription> files();
+    ImmutableList<SingleFileDescription> files();
 
     interface SingleFileDescription {
         String path();

@@ -102,7 +102,7 @@ public final class Bencodes {
                 if (!(obj instanceof Bencode)) return false;
                 return ((Bencode) obj).accept(new AbstractVisitor<Boolean>(false) {
                     @Override
-                    public Boolean visitDictionary(Map<String, Bencode> otherValue) {
+                    public Boolean visitDictionary(ImmutableMap<String, Bencode> otherValue) {
                         return Objects.equal(safeValue, otherValue);
                     }
                 });
@@ -116,7 +116,7 @@ public final class Bencodes {
     }
 
     public static Bencode sequence(List<Bencode> value) {
-        final List<Bencode> safeValue = ImmutableList.copyOf(value);
+        final ImmutableList<Bencode> safeValue = ImmutableList.copyOf(value);
         return new Bencode() {
             @Override
             public <R> R accept(Visitor<R> visitor) {
@@ -133,7 +133,7 @@ public final class Bencodes {
                 if (!(obj instanceof Bencode)) return false;
                 return ((Bencode) obj).accept(new AbstractVisitor<Boolean>(false) {
                     @Override
-                    public Boolean visitSequence(List<Bencode> otherValue) {
+                    public Boolean visitSequence(ImmutableList<Bencode> otherValue) {
                         return Objects.equal(safeValue, otherValue);
                     }
                 });

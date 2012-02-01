@@ -1,8 +1,11 @@
 package org.trolo.common;
 
+import javax.annotation.concurrent.Immutable;
+
 /**
  * @author: Stanislav Kurilin
  */
+@Immutable
 public final class Sha1Hash {
     private final String value;
 

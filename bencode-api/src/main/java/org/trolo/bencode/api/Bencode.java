@@ -1,11 +1,14 @@
 package org.trolo.bencode.api;
 
-import java.util.List;
-import java.util.Map;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+
+import javax.annotation.concurrent.Immutable;
 
 /**
  * @author: Stanislav Kurilin
  */
+@Immutable
 public interface Bencode {
     <R> R accept(Visitor<R> visitor);
 
@@ -14,9 +17,9 @@ public interface Bencode {
 
         R visitLiteral(String value);
 
-        R visitSequence(List<Bencode> value);
+        R visitSequence(ImmutableList<Bencode> value);
 
-        R visitDictionary(Map<String, Bencode> value);
+        R visitDictionary(ImmutableMap<String, Bencode> value);
 
     }
 
@@ -42,12 +45,12 @@ public interface Bencode {
         }
 
         @Override
-        public R visitSequence(List<Bencode> value) {
+        public R visitSequence(ImmutableList<Bencode> value) {
             return defaultValue;
         }
 
         @Override
-        public R visitDictionary(Map<String, Bencode> value) {
+        public R visitDictionary(ImmutableMap<String, Bencode> value) {
             return defaultValue;
         }
     }
