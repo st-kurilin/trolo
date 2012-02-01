@@ -1,4 +1,4 @@
-package org.trolo.torrent;
+package org.trolo.common;
 
 /**
  * @author: Stanislav Kurilin

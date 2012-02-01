@@ -12,8 +12,15 @@
         <module>bencode-api</module>
         <module>bencode-impl</module>
         <module>torrent-file</module>
+        <module>torrent-file-parser-impl</module>
+        <module>common</module>
     </modules>
     <dependencies>
+        <dependency>
+            <groupId>trolo</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0</version>
+        </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>

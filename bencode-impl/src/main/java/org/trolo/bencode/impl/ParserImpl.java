@@ -4,7 +4,7 @@ import com.google.common.base.Optional;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import org.trolo.bencode.api.Bencode;
-import org.trolo.bencode.api.Parser;
+import org.trolo.bencode.api.BencodesParser;
 
 import static com.google.common.base.Functions.compose;
 import static com.google.common.base.Optional.absent;
@@ -18,7 +18,7 @@ import static org.trolo.bencode.impl.Util.INTEGER_PARSER;
 /**
  * @author: Stanislav Kurilin
  */
-public class ParserImpl implements Parser {
+public class ParserImpl implements BencodesParser {
     public Optional<ImmutableList<Bencode>> parse(String in) {
         final ImmutableList.Builder<Bencode> result = builder();
         final SimpleReader reader = new SimpleReader(in);

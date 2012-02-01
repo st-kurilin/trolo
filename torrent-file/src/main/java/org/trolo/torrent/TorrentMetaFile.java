@@ -1,6 +1,8 @@
 package org.trolo.torrent;
 
 
+import org.trolo.common.Sha1Hash;
+
 import java.net.URI;
 import java.util.List;
 
