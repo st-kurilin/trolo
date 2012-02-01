@@ -11,6 +11,7 @@
     <modules>
         <module>bencode-api</module>
         <module>bencode-impl</module>
+        <module>torrent-file</module>
     </modules>
     <dependencies>
         <dependency>
