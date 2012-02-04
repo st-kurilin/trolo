@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.primitives.Longs;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -44,15 +45,22 @@ public final class Bencodes {
         };
     }
 
+    @Deprecated
     public static Bencode literal(final String value) {
+        throw new RuntimeException("don't do this");
+    }
+
+    public static Bencode literal(final Collection<Byte> value) {
+        final ImmutableList<Byte> safeValue = ImmutableList.copyOf(value);
         return new Bencode() {
+
             public <R> R accept(Visitor<R> visitor) {
-                return visitor.visitLiteral(value);
+                return visitor.visitData(safeValue);
             }
 
             @Override
             public int hashCode() {
-                return Objects.hashCode(value);
+                return Objects.hashCode(safeValue);
             }
 
             @Override
@@ -60,15 +68,15 @@ public final class Bencodes {
                 if (!(obj instanceof Bencode)) return false;
                 return ((Bencode) obj).accept(new AbstractVisitor<Boolean>(false) {
                     @Override
-                    public Boolean visitLiteral(String otherValue) {
-                        return value.equals(otherValue);
+                    public Boolean visitData(ImmutableList<Byte> otherValue) {
+                        return safeValue.equals(otherValue);
                     }
                 });
             }
 
             @Override
             public String toString() {
-                return Objects.toStringHelper(Bencode.class).add("value", value).toString();
+                return Objects.toStringHelper(Bencode.class).add("value", safeValue).toString();
             }
         };
     }

@@ -1,6 +1,7 @@
 package org.trolo.bencode.impl;
 
 import com.google.common.base.Charsets;
+import com.google.common.collect.ImmutableList;
 import com.google.common.primitives.Bytes;
 
 import java.util.ArrayList;
@@ -19,8 +20,7 @@ public class Interpreter {
         this.listener = listener;
     }
 
-    public void doIt(String in) {
-        final byte[] content = in.getBytes(Charsets.UTF_8);
+    public void doIt(ImmutableList<Byte> content) {
         List<Byte> buffer = newArrayList();
         boolean inString = false;
         boolean inInt = false;
@@ -31,7 +31,7 @@ public class Interpreter {
             if (inString) {
                 buffer.add(b);
                 if (stringLength == buffer.size()) {
-                    listener.string(buffer);
+                    listener.data(ImmutableList.copyOf(buffer));
                     buffer.clear();
                     inString = false;
                 }
@@ -58,23 +58,18 @@ public class Interpreter {
                 inInt = false;
                 continue;
             }
-            if (b == b("e") && buffer.isEmpty()) {
+            if (b == b("e")) {
                 checkState(buffer.isEmpty());
                 listener.end();
                 continue;
             }
             if (b == b(":")) {
-                try{
+
                 stringLength = parseInt(buffer);
-                } catch (Exception e) {
-                    listener.end();
-                    listener.end();
-                    listener.end();
-                    listener.end();
-                }
+
                 buffer.clear();
                 if (stringLength == 0) {
-                    listener.string(new ArrayList<Byte>());
+                    listener.data(ImmutableList.<Byte>of());
                 } else {
                     inString = true;
                 }

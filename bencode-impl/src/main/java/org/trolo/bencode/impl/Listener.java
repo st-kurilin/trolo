@@ -1,5 +1,7 @@
 package org.trolo.bencode.impl;
 
+import com.google.common.collect.ImmutableList;
+
 import java.util.List;
 
 /**
@@ -12,7 +14,7 @@ public interface Listener {
 
     void end();
 
-    void string(List<Byte> buffer);
+    void data(ImmutableList<Byte> val);
 
     void onInt(long l);
 }

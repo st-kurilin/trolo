@@ -11,7 +11,7 @@ import org.trolo.bencode.api.BencodesParser;
 public class ParserImpl implements BencodesParser{
 
     @Override
-    public Optional<ImmutableList<Bencode>> parse(String in) {
+    public Optional<ImmutableList<Bencode>> parse(ImmutableList<Byte> in) {
         final RecordedListener listener = new RecordedListener();
         new Interpreter(listener).doIt(in);
         return listener.result();

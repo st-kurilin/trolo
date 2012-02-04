@@ -4,12 +4,16 @@ import com.google.common.base.Charsets;
 import com.google.common.base.Optional;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.io.Files;
 import com.google.common.io.Resources;
+import com.google.common.primitives.Bytes;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.trolo.bencode.api.Bencode;
 import org.trolo.bencode.api.BencodesParser;
 
+import javax.annotation.concurrent.Immutable;
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -29,18 +33,23 @@ import static org.trolo.bencode.api.Bencodes.*;
 public class ParserTest {
     BencodesParser parser = new ParserImpl();
 
-    @Test(dataProvider = "data")
+    @Test(dataProvider = "data", enabled = false)
+
     public void test(String toParse, Optional<ImmutableList<Bencode>> result) {
-        final Optional<ImmutableList<Bencode>> parse = parser.parse(toParse);
+        final Optional<ImmutableList<Bencode>> parse = parser.parse(ImmutableList.copyOf(Bytes.asList(toParse.getBytes(Charsets.UTF_8))));
         checkNotNull(parse);
         assertEquals(parse, result);
     }
 
+
     @Test
-    public void a() {
-        final Optional<ImmutableList<Bencode>> parse = parser.parse("4:spam");
-                checkNotNull(parse);
-                assertEquals(parse, atomic("spam"));
+    public void a() throws IOException {
+
+        final byte[] content = Files.toByteArray(new File("D://simplestFile.torrent"));
+        final Optional<ImmutableList<Bencode>> parse = parser.parse(ImmutableList.copyOf(Bytes.asList(content)));
+        checkNotNull(parse);
+        final ImmutableMap<String, Bencode> yo = ImmutableMap.of("pieces", literal("㪤o\u0018�\u00123c܇S\u0014\u001CD�"));
+        assertEquals(parse, atomic(ImmutableMap.of("info", dictionary(yo))));
     }
 
     @DataProvider
@@ -64,14 +73,23 @@ public class ParserTest {
     }
 
 
-    @Test
-    public void t() throws IOException, URISyntaxException {
-        final String s = "http://cdimage.debian.org/debian-cd/6.0.4/sparc/bt-cd/debian-6.0.4-sparc-xfce+lxde-CD-1.iso.torrent";
-        final String content = Resources.toString(new URL(s), Charsets.UTF_8);
-        final Optional<ImmutableList<Bencode>> res = parser.parse(content);
-        assertTrue(res.isPresent(), content);
-        System.out.println(res.get());
-    }
+//    @Test(enabled = false)
+//    public void debianImage() throws IOException, URISyntaxException {
+//        final String s = "http://cdimage.debian.org/debian-cd/6.0.4/sparc/bt-cd/debian-6.0.4-sparc-xfce+lxde-CD-1.iso.torrent";
+//        final String content = Resources.toString(new URL(s), Charsets.UTF_8);
+//        final Optional<ImmutableList<Bencode>> res = parser.parse(content);
+//        assertTrue(res.isPresent(), content);
+//        System.out.println(res.get());
+//    }
+
+//    @Test(enabled = false)
+//    public void verySimpleFile() throws IOException, URISyntaxException {
+//        final String content = Files.toString(new File("D://simpleFile.torrent"), Charsets.UTF_8);
+//        final Optional<ImmutableList<Bencode>> res = parser.parse(content);
+//        assertTrue(res.isPresent(), content);
+//        System.out.println(res.get());
+//    }
+
 
     private static Optional<ImmutableList<Bencode>> atomic(String value) {
         return Optional.of(of(literal(value)));

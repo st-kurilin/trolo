@@ -20,4 +20,8 @@ public final class Sha1Hash {
     public String hash() {
         return value;
     }
+
+    public static Sha1Hash create(byte[] bytes) {
+        return create(new String(bytes));
+    }
 }

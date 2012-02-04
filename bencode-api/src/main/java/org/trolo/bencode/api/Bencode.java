@@ -15,7 +15,7 @@ public interface Bencode {
     interface Visitor<R> {
         R visitDigit(long value);
 
-        R visitLiteral(String value);
+        R visitData(ImmutableList<Byte> value);
 
         R visitSequence(ImmutableList<Bencode> value);
 
@@ -40,7 +40,7 @@ public interface Bencode {
         }
 
         @Override
-        public R visitLiteral(String value) {
+        public R visitData(ImmutableList<Byte> value) {
             return defaultValue;
         }
 

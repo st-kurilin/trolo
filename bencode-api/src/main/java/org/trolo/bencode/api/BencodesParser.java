@@ -10,5 +10,5 @@ import javax.annotation.concurrent.Immutable;
  * @author: Stanislav Kurilin
  */
 @Immutable
-public interface BencodesParser extends Parser<ImmutableList<Bencode>> {
+public interface BencodesParser extends Parser<ImmutableList<Byte>, ImmutableList<Bencode>> {
 }

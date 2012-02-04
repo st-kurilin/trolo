@@ -8,6 +8,6 @@ import javax.annotation.concurrent.Immutable;
  * @author: Stanislav Kurilin
  */
 @Immutable
-public interface Parser<R> {
-    Optional<R> parse(String in);
+public interface Parser<F, R> {
+    Optional<R> parse(F in);
 }
