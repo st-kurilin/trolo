@@ -23,9 +23,7 @@ public class Interpreter {
         boolean inString = false;
         boolean inInt = false;
         long stringLength = 0;
-        int i = -1;
         for (byte b : content) {
-            i++;
             if (inString) {
                 buffer.add(b);
                 if (stringLength == buffer.size()) {

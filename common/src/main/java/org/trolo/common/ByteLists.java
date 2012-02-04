@@ -1,6 +1,7 @@
 package org.trolo.common;
 
 import com.google.common.base.Charsets;
+import com.google.common.collect.ImmutableList;
 import com.google.common.primitives.Bytes;
 
 import java.text.DecimalFormat;
@@ -22,5 +23,9 @@ public class ByteLists {
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static ImmutableList<Byte> fromString(String val) {
+        return ImmutableList.copyOf(Bytes.asList(val.getBytes(Charsets.UTF_8)));
     }
 }

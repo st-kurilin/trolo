@@ -45,11 +45,6 @@ public final class Bencodes {
         };
     }
 
-    @Deprecated
-    public static Bencode literal(final String value) {
-        throw new RuntimeException("don't do this");
-    }
-
     public static Bencode literal(final Collection<Byte> value) {
         final ImmutableList<Byte> safeValue = ImmutableList.copyOf(value);
         return new Bencode() {
