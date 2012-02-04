@@ -2,8 +2,6 @@ package org.trolo.bencode.impl;
 
 import com.google.common.collect.ImmutableList;
 
-import java.util.List;
-
 /**
  * @author: Stanislav Kurilin
  */

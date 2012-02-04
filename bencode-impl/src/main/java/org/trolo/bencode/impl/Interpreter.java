@@ -1,14 +1,12 @@
 package org.trolo.bencode.impl;
 
-import com.google.common.base.Charsets;
 import com.google.common.collect.ImmutableList;
-import com.google.common.primitives.Bytes;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.google.common.base.Preconditions.checkState;
 import static com.google.common.collect.Lists.newArrayList;
+import static org.trolo.common.ByteLists.toLong;
 
 /**
  * @author: Stanislav Kurilin
@@ -53,7 +51,7 @@ public class Interpreter {
                 continue;
             }
             if (b == b("e") && inInt) {
-                listener.onInt(parseInt(buffer));
+                listener.onInt(toLong(buffer));
                 buffer.clear();
                 inInt = false;
                 continue;
@@ -65,7 +63,7 @@ public class Interpreter {
             }
             if (b == b(":")) {
 
-                stringLength = parseInt(buffer);
+                stringLength = toLong(buffer);
 
                 buffer.clear();
                 if (stringLength == 0) {
@@ -80,10 +78,6 @@ public class Interpreter {
         }
     }
 
-    private long parseInt(List<Byte> buffer) {
-        final String s = new String(Bytes.toArray(buffer), Charsets.UTF_8);
-        return Util.INTEGER_PARSER.apply(s);
-    }
 
     private byte b(String d) {
         final byte[] bytes = d.getBytes();

@@ -1,14 +1,13 @@
 package org.trolo.torrent;
 
-import com.google.common.base.Charsets;
 import com.google.common.base.Optional;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.primitives.Bytes;
 import org.trolo.bencode.api.Bencode;
 import org.trolo.bencode.api.BencodesParser;
+import org.trolo.common.ByteLists;
 import org.trolo.common.Sha1Hash;
-import org.trolo.common.Utils;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -49,13 +48,10 @@ public class TorrentFileParserImpl implements TorrentFileParser {
         return Optional.<TorrentMetaFile>of(new TorrentMetaFile() {
             @Override
             public URI announce() throws URISyntaxException {
-                if (!value.containsKey("announce")) {
-                    return URI.create("");
-                }
                 return new URI(checkNotNull(value.get("announce")).accept(new Bencode.AbstractVisitor<String>() {
                     @Override
                     public String visitData(ImmutableList<Byte> value) {
-                        return Utils.asString(value);
+                        return ByteLists.toString(value);
                     }
                 }));
             }
@@ -65,7 +61,7 @@ public class TorrentFileParserImpl implements TorrentFileParser {
                 return checkNotNull(value.get("name")).accept(new Bencode.AbstractVisitor<String>() {
                     @Override
                     public String visitData(ImmutableList<Byte> value) {
-                        return Utils.asString(value);
+                        return ByteLists.toString(value);
                     }
                 });
             }

@@ -1,6 +1,5 @@
 package org.trolo.bencode.impl;
 
-import com.google.common.base.Charsets;
 import com.google.common.collect.ImmutableList;
 import com.google.common.io.Files;
 import com.google.common.primitives.Bytes;
@@ -8,7 +7,6 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.InOrder;
 
-import javax.annotation.concurrent.Immutable;
 import java.io.File;
 import java.io.IOException;
 

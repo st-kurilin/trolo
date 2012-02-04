@@ -1,20 +1,16 @@
 package org.trolo.bencode.impl;
 
-import com.google.common.base.Charsets;
 import com.google.common.base.Optional;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.primitives.Bytes;
 import org.trolo.bencode.api.Bencode;
-import org.trolo.common.Utils;
+import org.trolo.common.ByteLists;
 
 import java.util.LinkedList;
-import java.util.List;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.collect.Lists.newLinkedList;
 import static org.trolo.bencode.api.Bencodes.*;
-import static org.trolo.bencode.api.Bencodes.literal;
 
 /**
  * @author: Stanislav Kurilin
@@ -38,7 +34,7 @@ public class RecordedListener implements Listener {
         if (!builders.isEmpty()) {
             final Builder current = builders.removeLast();
             add(current.build());
-        }else {
+        } else {
             System.out.println("fuck");
         }
     }
@@ -94,7 +90,7 @@ public class RecordedListener implements Listener {
                 key = checkNotNull(c.accept(new Bencode.AbstractVisitor<String>() {
                     @Override
                     public String visitData(ImmutableList<Byte> value) {
-                        return Utils.asString(value);
+                        return ByteLists.toString(value);
                     }
                 }));
             } else {

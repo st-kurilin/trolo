@@ -8,7 +8,7 @@ import org.trolo.bencode.api.BencodesParser;
 /**
  * @author: Stanislav Kurilin
  */
-public class ParserImpl implements BencodesParser{
+public class ParserImpl implements BencodesParser {
 
     @Override
     public Optional<ImmutableList<Bencode>> parse(ImmutableList<Byte> in) {

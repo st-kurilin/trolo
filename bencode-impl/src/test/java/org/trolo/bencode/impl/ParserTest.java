@@ -5,25 +5,20 @@ import com.google.common.base.Optional;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.io.Files;
-import com.google.common.io.Resources;
 import com.google.common.primitives.Bytes;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.trolo.bencode.api.Bencode;
 import org.trolo.bencode.api.BencodesParser;
 
-import javax.annotation.concurrent.Immutable;
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.List;
 import java.util.Map;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.collect.ImmutableList.of;
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 import static org.trolo.bencode.api.Bencodes.*;
 
 
