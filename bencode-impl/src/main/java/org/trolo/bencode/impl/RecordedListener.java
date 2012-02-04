@@ -13,7 +13,7 @@ import static com.google.common.collect.Lists.newLinkedList;
 import static org.trolo.bencode.api.Bencodes.*;
 
 /**
- * @author: Stanislav Kurilin
+ * @author Stanislav Kurilin
  */
 public class RecordedListener implements Listener {
     LinkedList<Builder> builders = newLinkedList();

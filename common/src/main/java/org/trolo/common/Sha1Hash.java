@@ -3,7 +3,7 @@ package org.trolo.common;
 import javax.annotation.concurrent.Immutable;
 
 /**
- * @author: Stanislav Kurilin
+ * @author Stanislav Kurilin
  */
 @Immutable
 public final class Sha1Hash {

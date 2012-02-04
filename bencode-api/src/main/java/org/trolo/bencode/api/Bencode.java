@@ -6,7 +6,7 @@ import com.google.common.collect.ImmutableMap;
 import javax.annotation.concurrent.Immutable;
 
 /**
- * @author: Stanislav Kurilin
+ * @author Stanislav Kurilin
  */
 @Immutable
 public interface Bencode {

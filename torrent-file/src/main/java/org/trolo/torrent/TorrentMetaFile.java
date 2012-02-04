@@ -9,7 +9,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 /**
- * @author: Stanislav Kurilin
+ * @author Stanislav Kurilin
  */
 @Immutable
 public interface TorrentMetaFile {

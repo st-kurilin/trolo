@@ -16,7 +16,7 @@ import java.util.Arrays;
 import static com.google.common.base.Preconditions.*;
 
 /**
- * @author: Stanislav Kurilin
+ * @author Stanislav Kurilin
  */
 public class TorrentFileParserImpl implements TorrentFileParser {
     private final BencodesParser bencodesParser;

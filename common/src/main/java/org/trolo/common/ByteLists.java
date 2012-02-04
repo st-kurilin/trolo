@@ -8,7 +8,7 @@ import java.text.ParseException;
 import java.util.List;
 
 /**
- * @author: Stanislav Kurilin
+ * @author Stanislav Kurilin
  */
 public class ByteLists {
     public static String toString(List<Byte> value) {

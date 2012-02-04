@@ -3,7 +3,7 @@ package org.trolo.bencode.impl;
 import com.google.common.collect.ImmutableList;
 
 /**
- * @author: Stanislav Kurilin
+ * @author Stanislav Kurilin
  */
 public interface Listener {
     void dictStart();

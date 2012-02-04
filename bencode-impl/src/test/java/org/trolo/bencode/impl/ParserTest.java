@@ -23,7 +23,7 @@ import static org.trolo.bencode.api.Bencodes.*;
 
 
 /**
- * @author: Stanislav Kurilin
+ * @author Stanislav Kurilin
  */
 public class ParserTest {
     BencodesParser parser = new ParserImpl();

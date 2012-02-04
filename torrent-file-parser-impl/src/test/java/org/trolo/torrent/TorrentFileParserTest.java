@@ -17,7 +17,7 @@ import static org.testng.Assert.assertTrue;
 
 
 /**
- * @author: Stanislav Kurilin
+ * @author Stanislav Kurilin
  */
 
 public class TorrentFileParserTest {

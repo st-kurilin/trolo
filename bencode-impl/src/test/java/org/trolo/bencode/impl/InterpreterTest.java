@@ -13,7 +13,7 @@ import java.io.IOException;
 import static org.mockito.Mockito.*;
 
 /**
- * @author: Stanislav Kurilin
+ * @author Stanislav Kurilin
  */
 public class InterpreterTest {
     @Test()

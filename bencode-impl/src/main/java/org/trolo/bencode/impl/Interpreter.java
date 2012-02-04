@@ -9,7 +9,7 @@ import static com.google.common.collect.Lists.newArrayList;
 import static org.trolo.common.ByteLists.toLong;
 
 /**
- * @author: Stanislav Kurilin
+ * @author Stanislav Kurilin
  */
 public class Interpreter {
     private final Listener listener;
