@@ -6,7 +6,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.io.Resources;
 import com.google.common.primitives.Bytes;
 import org.testng.annotations.Test;
-import org.trolo.bencode.impl.ParserImpl;
+import org.trolo.bencode.parser.ParserImpl;
 import org.trolo.common.Sha1Hash;
 import org.trolo.domain.Peer;
 import org.trolo.domain.TorrentMetaFile;

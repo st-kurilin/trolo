@@ -1,4 +1,4 @@
-package org.trolo.bencode.impl;
+package org.trolo.bencode.parser;
 
 import com.google.common.collect.ImmutableList;
 

@@ -5,7 +5,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.io.Resources;
 import com.google.common.primitives.Bytes;
 import org.testng.annotations.Test;
-import org.trolo.bencode.impl.ParserImpl;
+import org.trolo.bencode.parser.ParserImpl;
 import org.trolo.domain.TorrentMetaFile;
 
 import java.io.IOException;

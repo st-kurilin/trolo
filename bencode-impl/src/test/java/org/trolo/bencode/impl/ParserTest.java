@@ -9,6 +9,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.trolo.bencode.api.Bencode;
 import org.trolo.bencode.api.BencodesParser;
+import org.trolo.bencode.parser.ParserImpl;
 
 import java.util.List;
 import java.util.Map;

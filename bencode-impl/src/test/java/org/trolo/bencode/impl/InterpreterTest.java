@@ -6,6 +6,8 @@ import com.google.common.primitives.Bytes;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.InOrder;
+import org.trolo.bencode.parser.Interpreter;
+import org.trolo.bencode.parser.Listener;
 import org.trolo.common.ByteLists;
 
 import java.io.IOException;
