@@ -22,7 +22,7 @@ import static org.testng.Assert.assertTrue;
  */
 public class TrackerTest {
     public static final TorrentFileParserImpl TORRENT_FILE_PARSER = new TorrentFileParserImpl(new ParserImpl(), null);
-    public static final TrackerImpl TRACKER = new TrackerImpl(Sha1Hash.create("123"));
+    public static final TrackerImpl TRACKER = new TrackerImpl(Sha1Hash.hash("123"));
 
     @Test
     public void seedsForDebian() throws IOException {

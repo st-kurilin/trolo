@@ -76,7 +76,7 @@ public class TorrentFileParserImpl implements TorrentFileParser {
 
             @Override
             public Sha1Hash infoHash() {
-                return Sha1Hash.create(Bytes.toArray(bencodeSerializer.serialize(value.get("info"))));
+                return Sha1Hash.hash(bencodeSerializer.serialize(value.get("info")));
             }
 
             @Override
@@ -101,7 +101,7 @@ public class TorrentFileParserImpl implements TorrentFileParser {
                 checkState(bytes.length * 8 % 160 == 0, bytes.length);
                 final ImmutableList.Builder<Sha1Hash> result = ImmutableList.builder();
                 for (int i = 0; i < bytes.length - 1; i += 160)
-                    result.add(Sha1Hash.create(Arrays.copyOfRange(bytes, i, i + 160)));
+                    result.add(Sha1Hash.valueOf(Arrays.copyOfRange(bytes, i, i + 160)));
                 return result.build();
             }
 
