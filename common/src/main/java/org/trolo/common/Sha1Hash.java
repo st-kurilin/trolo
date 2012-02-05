@@ -19,6 +19,8 @@ import static com.google.common.base.Preconditions.checkArgument;
 @Immutable
 public final class Sha1Hash {
     private final ImmutableList<Byte> value;
+    public static final int BIT_IN_ONE_HASH = 160;
+    public static final int BYTE_IN_ONE_HASH = BIT_IN_ONE_HASH / Byte.SIZE;
 
     private Sha1Hash(ImmutableList<Byte> value) {
         this.value = value;
@@ -30,7 +32,8 @@ public final class Sha1Hash {
 
     public static Sha1Hash valueOf(List<Byte> hash) {
         final ImmutableList<Byte> safeValue = ImmutableList.copyOf(hash);
-        checkArgument(safeValue.size() == 20, "Each SHA-1 should consist from 20 bytes, but %s presented", hash.size());
+        checkArgument(safeValue.size() == BYTE_IN_ONE_HASH,
+                "Each SHA-1 should consist from %s bytes, but %s presented", BYTE_IN_ONE_HASH, hash.size());
         return new Sha1Hash(safeValue);
     }
 

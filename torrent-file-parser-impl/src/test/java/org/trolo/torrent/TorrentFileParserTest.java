@@ -37,7 +37,7 @@ public class TorrentFileParserTest {
         assertTrue(!metaFile.pieces().isEmpty());
         assertEquals(new URI("http://bttracker.debian.org:6969/announce"), metaFile.announce());
         assertEquals(metaFile.bytesInPiece(), 524288);
-        assertEquals(metaFile.pieces().size(), 162);
+        assertEquals(metaFile.pieces().size(), 1296);
         final TorrentMetaFile.SingleFileDescription singleFile = metaFile.files().iterator().next();
         assertEquals(singleFile.length(), 679260160);
         assertEquals("", singleFile.path());
