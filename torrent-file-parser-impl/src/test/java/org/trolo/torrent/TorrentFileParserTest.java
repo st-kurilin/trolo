@@ -22,7 +22,7 @@ import static org.testng.Assert.assertTrue;
  */
 
 public class TorrentFileParserTest {
-    private final TorrentFileParser parser = new TorrentFileParserImpl(new ParserImpl());
+    private final TorrentFileParser parser = new TorrentFileParserImpl(new ParserImpl(), null);
 
     @Test
     public void testSingleFileTorrentFileParser() throws IOException, URISyntaxException {

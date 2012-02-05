@@ -1,5 +1,7 @@
 package org.trolo.common;
 
+import com.google.common.collect.ImmutableList;
+
 import javax.annotation.concurrent.Immutable;
 
 /**
@@ -17,8 +19,8 @@ public final class Sha1Hash {
         this.value = value;
     }
 
-    public String hash() {
-        return value;
+    public ImmutableList<Byte> hash() {
+        return null;
     }
 
     public static Sha1Hash create(byte[] bytes) {

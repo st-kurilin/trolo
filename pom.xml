@@ -15,6 +15,7 @@
         <module>torrent-file-parser-impl</module>
         <module>common</module>
         <module>domain</module>
+        <module>tracker-impl</module>
     </modules>
     <dependencies>
         <dependency>
@@ -47,6 +48,16 @@
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
             <version>1.9.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.6.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.6.4</version>
         </dependency>
     </dependencies>
 </project>

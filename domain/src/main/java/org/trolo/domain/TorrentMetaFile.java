@@ -6,14 +6,13 @@ import org.trolo.common.Sha1Hash;
 
 import javax.annotation.concurrent.Immutable;
 import java.net.URI;
-import java.net.URISyntaxException;
 
 /**
  * @author Stanislav Kurilin
  */
 @Immutable
 public interface TorrentMetaFile {
-    URI announce() throws URISyntaxException;
+    URI announce();
 
     String name();
 
@@ -22,6 +21,8 @@ public interface TorrentMetaFile {
     ImmutableList<Sha1Hash> pieces();
 
     ImmutableList<SingleFileDescription> files();
+
+    Sha1Hash infoHash();
 
     interface SingleFileDescription {
         String path();

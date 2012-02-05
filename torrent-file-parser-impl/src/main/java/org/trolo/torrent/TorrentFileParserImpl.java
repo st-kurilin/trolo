@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.primitives.Bytes;
 import org.trolo.bencode.api.Bencode;
+import org.trolo.bencode.api.BencodeSerializer;
 import org.trolo.bencode.api.BencodesParser;
 import org.trolo.common.ByteLists;
 import org.trolo.common.Sha1Hash;
@@ -21,9 +22,11 @@ import static com.google.common.base.Preconditions.*;
  */
 public class TorrentFileParserImpl implements TorrentFileParser {
     private final BencodesParser bencodesParser;
+    private final BencodeSerializer bencodeSerializer;
 
-    public TorrentFileParserImpl(BencodesParser bencodesParser) {
+    public TorrentFileParserImpl(BencodesParser bencodesParser, BencodeSerializer bencodeSerializer) {
         this.bencodesParser = bencodesParser;
+        this.bencodeSerializer = bencodeSerializer;
     }
 
     @Override
@@ -48,13 +51,17 @@ public class TorrentFileParserImpl implements TorrentFileParser {
         });
         return Optional.<TorrentMetaFile>of(new TorrentMetaFile() {
             @Override
-            public URI announce() throws URISyntaxException {
-                return new URI(checkNotNull(value.get("announce")).accept(new Bencode.AbstractVisitor<String>() {
-                    @Override
-                    public String visitData(ImmutableList<Byte> value) {
-                        return ByteLists.toString(value);
-                    }
-                }));
+            public URI announce() {
+                try {
+                    return new URI(checkNotNull(value.get("announce")).accept(new Bencode.AbstractVisitor<String>() {
+                        @Override
+                        public String visitData(ImmutableList<Byte> value) {
+                            return ByteLists.toString(value);
+                        }
+                    }));
+                } catch (URISyntaxException e) {
+                    throw new RuntimeException(e);
+                }
             }
 
             @Override
@@ -65,6 +72,11 @@ public class TorrentFileParserImpl implements TorrentFileParser {
                         return ByteLists.toString(value);
                     }
                 });
+            }
+
+            @Override
+            public Sha1Hash infoHash() {
+                return Sha1Hash.create(Bytes.toArray(bencodeSerializer.serialize(value.get("info"))));
             }
 
             @Override
