@@ -25,6 +25,10 @@ public class ByteLists {
         }
     }
 
+    public static ImmutableList<Byte> fromLong(long value) {
+        return fromString(Long.toString(value));
+    }
+
     public static ImmutableList<Byte> fromString(String val) {
         return ImmutableList.copyOf(Bytes.asList(val.getBytes(Charsets.UTF_8)));
     }
