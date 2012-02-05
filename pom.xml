@@ -18,11 +18,7 @@
         <module>tracker-impl</module>
     </modules>
     <dependencies>
-        <dependency>
-            <groupId>trolo</groupId>
-            <artifactId>common</artifactId>
-            <version>1.0</version>
-        </dependency>
+
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -56,8 +52,9 @@
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
+            <artifactId>slf4j-log4j12</artifactId>
             <version>1.6.4</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

@@ -10,6 +10,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>domain</artifactId>
-
-
+    <dependencies>
+        <dependency>
+            <groupId>trolo</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
 </project>
