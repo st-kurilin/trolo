@@ -7,6 +7,7 @@ import com.google.common.io.Resources;
 import com.google.common.primitives.Bytes;
 import org.testng.annotations.Test;
 import org.trolo.bencode.parser.ParserImpl;
+import org.trolo.bencode.serializer.BencodeSerializerImpl;
 import org.trolo.common.Sha1Hash;
 import org.trolo.domain.Peer;
 import org.trolo.domain.TorrentMetaFile;
@@ -21,7 +22,8 @@ import static org.testng.Assert.assertTrue;
  * @author Stanislav Kurilin
  */
 public class TrackerTest {
-    public static final TorrentFileParserImpl TORRENT_FILE_PARSER = new TorrentFileParserImpl(new ParserImpl(), null);
+    public static final TorrentFileParserImpl TORRENT_FILE_PARSER
+            = new TorrentFileParserImpl(new ParserImpl(), new BencodeSerializerImpl());
     public static final TrackerImpl TRACKER = new TrackerImpl(Sha1Hash.hash("123"));
 
     @Test

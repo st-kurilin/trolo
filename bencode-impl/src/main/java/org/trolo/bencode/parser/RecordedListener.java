@@ -9,6 +9,7 @@ import org.trolo.common.ByteLists;
 import java.util.LinkedList;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static com.google.common.base.Preconditions.checkState;
 import static com.google.common.collect.Lists.newLinkedList;
 import static org.trolo.bencode.api.Bencodes.*;
 
@@ -31,12 +32,9 @@ public class RecordedListener implements Listener {
 
     @Override
     public void end() {
-        if (!builders.isEmpty()) {
-            final Builder current = builders.removeLast();
-            add(current.build());
-        } else {
-            System.out.println("fuck");
-        }
+        checkState(!builders.isEmpty());
+        final Builder current = builders.removeLast();
+        add(current.build());
     }
 
     private void add(Bencode c) {

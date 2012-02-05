@@ -6,6 +6,7 @@ import com.google.common.io.Resources;
 import com.google.common.primitives.Bytes;
 import org.testng.annotations.Test;
 import org.trolo.bencode.parser.ParserImpl;
+import org.trolo.bencode.serializer.BencodeSerializerImpl;
 import org.trolo.domain.TorrentMetaFile;
 
 import java.io.IOException;
@@ -22,7 +23,7 @@ import static org.testng.Assert.assertTrue;
  */
 
 public class TorrentFileParserTest {
-    private final TorrentFileParser parser = new TorrentFileParserImpl(new ParserImpl(), null);
+    private final TorrentFileParser parser = new TorrentFileParserImpl(new ParserImpl(), new BencodeSerializerImpl());
 
     @Test
     public void testSingleFileTorrentFileParser() throws IOException, URISyntaxException {
