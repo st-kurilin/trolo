@@ -1,4 +1,4 @@
-package org.trolo.torrent;
+package org.trolo.domain;
 
 
 import com.google.common.collect.ImmutableList;

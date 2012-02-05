@@ -14,6 +14,7 @@
         <module>torrent-file</module>
         <module>torrent-file-parser-impl</module>
         <module>common</module>
+        <module>domain</module>
     </modules>
     <dependencies>
         <dependency>

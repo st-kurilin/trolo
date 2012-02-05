@@ -8,6 +8,7 @@ import org.trolo.bencode.api.Bencode;
 import org.trolo.bencode.api.BencodesParser;
 import org.trolo.common.ByteLists;
 import org.trolo.common.Sha1Hash;
+import org.trolo.domain.TorrentMetaFile;
 
 import java.net.URI;
 import java.net.URISyntaxException;

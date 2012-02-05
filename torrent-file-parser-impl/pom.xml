@@ -27,5 +27,10 @@
             <version>1.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <artifactId>domain</artifactId>
+            <groupId>trolo</groupId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 </project>

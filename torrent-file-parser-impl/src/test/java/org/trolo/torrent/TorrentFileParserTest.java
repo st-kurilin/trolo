@@ -6,6 +6,7 @@ import com.google.common.io.Resources;
 import com.google.common.primitives.Bytes;
 import org.testng.annotations.Test;
 import org.trolo.bencode.impl.ParserImpl;
+import org.trolo.domain.TorrentMetaFile;
 
 import java.io.IOException;
 import java.net.URI;

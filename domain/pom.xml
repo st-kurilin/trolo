@@ -9,12 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>torrent-file</artifactId>
-    <dependencies>
-        <dependency>
-            <artifactId>domain</artifactId>
-            <groupId>trolo</groupId>
-            <version>1.0</version>
-        </dependency>
-    </dependencies>
+    <artifactId>domain</artifactId>
+
+
 </project>
