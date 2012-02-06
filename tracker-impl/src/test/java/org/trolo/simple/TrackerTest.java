@@ -24,7 +24,7 @@ import static org.testng.Assert.assertTrue;
 public class TrackerTest {
     public static final TorrentFileParserImpl TORRENT_FILE_PARSER
             = new TorrentFileParserImpl(new ParserImpl(), new BencodeSerializerImpl());
-    public static final TrackerImpl TRACKER = new TrackerImpl(Sha1Hash.hash("123"));
+    public static final TrackerImpl TRACKER = new TrackerImpl(Sha1Hash.hash("123"), new ParserImpl());
 
     @Test
     public void seedsForDebian() throws IOException {
@@ -34,5 +34,6 @@ public class TrackerTest {
         final Optional<TorrentMetaFile> parsed = TORRENT_FILE_PARSER.parse(bytes);
         assertTrue(parsed.isPresent());
         final Optional<ImmutableSet<Peer>> peers = TRACKER.process(parsed.get());
+        System.out.println(peers);
     }
 }

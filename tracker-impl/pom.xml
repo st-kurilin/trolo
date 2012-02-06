@@ -23,6 +23,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <artifactId>bencode-api</artifactId>
+            <groupId>trolo</groupId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
             <artifactId>bencode-impl</artifactId>
             <groupId>trolo</groupId>
             <version>1.0</version>

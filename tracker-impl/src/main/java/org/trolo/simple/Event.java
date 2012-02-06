@@ -6,5 +6,10 @@ package org.trolo.simple;
 enum Event {
     STARTED,    //The first request to the tracker must include the event key with this value.
     STOPPED,    //Must be sent to the tracker if the client is shutting down gracefully.
-    COMPLETED   //Must be sent to the tracker when the download completes.
+    COMPLETED;   //Must be sent to the tracker when the download completes.
+
+    @Override
+    public String toString() {
+        return super.toString().toLowerCase();
+    }
 }

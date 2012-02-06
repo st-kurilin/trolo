@@ -100,8 +100,8 @@ public class TorrentFileParserImpl implements TorrentFileParser {
                 final byte[] bytes = Bytes.toArray(concatenated);
                 checkState(bytes.length * 8 % 160 == 0, bytes.length);
                 final ImmutableList.Builder<Sha1Hash> result = ImmutableList.builder();
-                for (int i = 0; i < bytes.length - 1; i += Sha1Hash.BYTE_IN_ONE_HASH)
-                    result.add(Sha1Hash.valueOf(Arrays.copyOfRange(bytes, i, i + Sha1Hash.BYTE_IN_ONE_HASH)));
+                for (int i = 0; i < bytes.length - 1; i += 160)
+                    result.add(Sha1Hash.valueOf(Arrays.copyOfRange(bytes, i, i + 160)));
                 return result.build();
             }
 
