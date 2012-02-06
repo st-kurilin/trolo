@@ -4,10 +4,13 @@ import com.google.common.base.Charsets;
 import com.google.common.base.Objects;
 import com.google.common.collect.ImmutableList;
 import com.google.common.primitives.Bytes;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.concurrent.Immutable;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 import java.util.Formatter;
 import java.util.List;
 
@@ -18,6 +21,7 @@ import static com.google.common.base.Preconditions.checkArgument;
  */
 @Immutable
 public final class Sha1Hash {
+    private static final Logger LOG = LoggerFactory.getLogger(Sha1Hash.class);
     private final ImmutableList<Byte> value;
     public static final int BIT_IN_ONE_HASH = 160;
     public static final int BYTE_IN_ONE_HASH = BIT_IN_ONE_HASH / Byte.SIZE;
@@ -51,8 +55,11 @@ public final class Sha1Hash {
 
     public static Sha1Hash hash(byte[] toHash) {
         try {
+            //Hashing.sha1().hashBytes(toHash).asBytes()
             final MessageDigest md = MessageDigest.getInstance("SHA-1");
-            return valueOf(md.digest(toHash));
+            final byte[] digest = md.digest(toHash);
+            LOG.debug("Calculate sha1 hash for {} = {}", Arrays.toString(toHash), Arrays.toString(digest));
+            return valueOf(digest);
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
